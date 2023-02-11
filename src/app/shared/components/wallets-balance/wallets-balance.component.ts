@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { Wallet } from '@app/shared/services/user.service';
 import { Maybe } from '@app/shared/types/maybe';
 
@@ -9,11 +14,14 @@ import { Maybe } from '@app/shared/types/maybe';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WalletsBalanceComponent implements OnInit {
-  @Input() public wallets: Maybe<Wallet[]>;
+  @Input('wallets') public wallets: Maybe<Wallet[]>;
+  public walletsBalance!: string;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+    this.walletsBalance =
+      this.wallets
+        ?.reduce((acc, wallet) => acc + wallet.amount, 0).toString() ?? 'N/A';
   }
-
 }

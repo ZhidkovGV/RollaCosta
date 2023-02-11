@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  column-gap: 8px;
+  background-color: var(--widget-background-color);
+  width: 150px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  align-items: center;
+
+  .wallets-balance {
+    font-weight: 700;
+    font-size: 16px;
+  }
+}

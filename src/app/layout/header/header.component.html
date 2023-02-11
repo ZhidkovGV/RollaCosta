@@ -1,4 +1,16 @@
 <header class="header">
-  <img src="assets/images/logo.png" alt="Logo" />
-  <button (click)="login()">Login</button>
+  <img src="assets/images/logo.png" alt="Logo" class="logo" />
+  <div *ngIf="false; else guestHeader">User</div>
 </header>
+
+<ng-template #guestHeader>
+  <h1 class="welcome-message">Welcome to RollaCosta! Please login to open some shine lootbox!</h1>
+  <button
+    mat-raised-button
+    color="accent"
+    class="login-button"
+    (click)="login()"
+  >
+    Login
+  </button>
+</ng-template>

@@ -2,8 +2,22 @@
   header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: var(--header-bg-color);
     height: 4.25rem;
-    padding: 8px;
+    padding: 8px 16px;
+  }
+
+  .login-button {
+    height: 40px;
+    width: 120px;
+  }
+
+  .logo {
+    width: 170px;
+  }
+
+  .welcome-message {
+    padding-top: 16px;
   }
 }

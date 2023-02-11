@@ -18,12 +18,12 @@
     "importHelpers": true,
     "target": "es2020",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom",
-      "esnext.asynciterable"
-    ],
+    "lib": ["es2020", "dom", "esnext.asynciterable"],
     "allowSyntheticDefaultImports": true
+  },
+  "paths": {
+    "@app/*": ["src/app/*"],
+    "@environments/*": ["src/environments/*"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

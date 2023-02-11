@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 import { HttpLink } from 'apollo-angular/http';
+import { environment } from '@environments/environment';
 
-const uri = 'https://api-staging.csgoroll.com/graphql';
+const uri = environment.graphQLUrl;
 
 export function createApollo(
   httpLink: HttpLink
 ): ApolloClientOptions<unknown> {
   return {
-    link: httpLink.create({ uri }),
+    link: httpLink.create({ uri, withCredentials: true }),
     cache: new InMemoryCache(),
   };
 }

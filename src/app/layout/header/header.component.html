@@ -1,6 +1,13 @@
 <header class="header">
   <img src="assets/images/logo.png" alt="Logo" class="logo" />
-  <div *ngIf="false; else guestHeader">User</div>
+  <div *ngIf="currentUser$ | async as currentUser; else guestHeader" class="user-info">
+    <app-wallets-balance [wallets]="currentUser.wallets"></app-wallets-balance>
+    <span class="user-name">{{ currentUser.name }}</span>
+    <app-avatar
+      [url]="currentUser.avatar"
+      [placeholder]="currentUser.name"
+    ></app-avatar>
+  </div>
 </header>
 
 <ng-template #guestHeader>

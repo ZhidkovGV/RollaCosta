@@ -1,1 +1,7 @@
-<p>avatar works!</p>
+<img class="avatar" [src]="url" alt="Avatar" *ngIf="url; else noAvatar" />
+
+<ng-template #noAvatar>
+  <span class="avatar">
+    {{ placeholder | slice : 2 }}
+  </span>
+</ng-template>

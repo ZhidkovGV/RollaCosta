@@ -20,4 +20,14 @@
   .welcome-message {
     padding-top: 16px;
   }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+
+    .user-name {
+        font-size: 1.25rem;
+    }
+  }
 }

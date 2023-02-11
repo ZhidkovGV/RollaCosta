@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BoxDashboardComponent } from './box-dashboard/box-dashboard.component';
-import { BoxCardComponent } from './box-card/box-card.component';
+import { BoxDashboardComponent } from '@app/box-dashboard/components/box-dashboard/box-dashboard.component';
+import { BoxCardComponent } from '@app/box-dashboard/components/box-card/box-card.component';
 
 
 

@@ -1,14 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
-import { updateCurrentUserAction } from '../actions/update-current-user.action';
-import { UserResponse } from '../services/user.service';
+import { updateCurrentUser } from '@app/shared/actions/update-current-user.action';
 
-export type Store = {
-  currentUser: UserResponse;
-};
-
-export const updateCurrentUserReducer = createReducer(
+export const reduceCurrentUser = createReducer(
   {},
-  on(updateCurrentUserAction, (state, { userResponse }) => {
+  on(updateCurrentUser, (state, { userResponse }) => {
     return { ...state, currentUser: userResponse.data?.currentUser };
   })
 );

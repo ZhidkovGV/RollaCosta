@@ -1,1 +1,7 @@
-<p>box-dashboard works!</p>
+<div *ngIf="lootBoxes$ | async as lootBoxes; else loading" class="dashboard">
+    <app-box-card *ngFor="let box of lootBoxes" [box]="box"></app-box-card>
+</div>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

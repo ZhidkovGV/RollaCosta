@@ -1,1 +1,20 @@
-<p>box-card works!</p>
+<mat-card>
+  <mat-card-content>
+    <img [src]="box.iconUrl" class="loot-box-img" alt="Loot box image" />
+    <div>
+      <h3 class="loot-box-name">{{ box.name }}</h3>
+      <app-coins [coins]="box.cost"></app-coins>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      color="accent"
+      *ngIf="isUserLoggedIn$ | async"
+      (click)="openBox()"
+    >
+      Open
+    </button>
+    <button mat-raised-button color="primary" (click)="viewBox()">View</button>
+  </mat-card-actions>
+</mat-card>

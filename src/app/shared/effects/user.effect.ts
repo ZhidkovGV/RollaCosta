@@ -7,7 +7,7 @@ import {
 } from '@ngrx/effects';
 import { UserService } from '@app/shared/services/user.service';
 import { map, switchMap } from 'rxjs';
-import { updateCurrentUserAction } from '@app/shared/actions/update-current-user.action';
+import { updateCurrentUser } from '@app/shared/actions/update-current-user.action';
 
 @Injectable()
 export class UserEffects {
@@ -17,8 +17,8 @@ export class UserEffects {
 
     return actions$.pipe(
       ofType(ROOT_EFFECTS_INIT),
-      switchMap(() => userService.user$),
-      map((response) => updateCurrentUserAction({ userResponse: response }))
+      switchMap(() => userService.currentUser$),
+      map((response) => updateCurrentUser({ userResponse: response }))
     );
   });
 }

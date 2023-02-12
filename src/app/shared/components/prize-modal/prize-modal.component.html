@@ -1,0 +1,4 @@
+<h2>You won {{ prize.name }}! Congrats!</h2>
+<img [src]="prize.iconUrl" class="prize-img" alt="Prize image" />
+<app-coins [coins]="prize.value"></app-coins>
+<button mat-raised-button color="accent" (click)="closeModal()">Wow!</button>

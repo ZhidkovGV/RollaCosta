@@ -9,6 +9,14 @@ import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   declarations: [HeaderComponent, LayoutComponent, NotFoundComponent],
-  imports: [CommonModule, RouterModule, MatButtonModule, SharedModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatButtonModule,
+    SharedModule,
+    RouterModule,
+    MatButtonModule
+  ],
+  exports: [LayoutComponent],
 })
 export class LayoutModule {}

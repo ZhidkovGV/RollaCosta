@@ -1,7 +1,7 @@
 <header class="header">
   <img src="assets/images/logo.png" alt="Logo" class="logo" />
   <div *ngIf="currentUser$ | async as currentUser; else guestHeader" class="user-info">
-    <app-wallets-balance [wallets]="currentUser.wallets"></app-wallets-balance>
+    <app-coins [coins]="currentUser | totalWalletBalance"></app-coins>
     <span class="user-name">{{ currentUser.name }}</span>
     <app-avatar
       [url]="currentUser.avatar"
@@ -11,7 +11,7 @@
 </header>
 
 <ng-template #guestHeader>
-  <h1 class="welcome-message">Welcome to RollaCosta! Please login to open some shine lootbox!</h1>
+  <h1 class="welcome-message">Welcome to RollaCosta! Please login to open some shiny lootbox!</h1>
   <button
     mat-raised-button
     color="accent"

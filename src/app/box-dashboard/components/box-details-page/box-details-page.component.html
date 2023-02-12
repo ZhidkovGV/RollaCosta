@@ -11,10 +11,14 @@
   </mat-card-content>
   <mat-card-footer>
     <app-coins [coins]="box.cost"></app-coins>
-    <button mat-raised-button color="accent">Open</button>
+    <button
+      mat-raised-button
+      color="accent"
+      *ngIf="isUserLoggedIn$ | async"
+      [disabled]="!(isUserFundsSufficient$ | async)"
+      (click)="openBox(box.id)"
+    >
+      Open
+    </button>
   </mat-card-footer>
 </mat-card>
-
-<!-- *ngIf="isOpenShown$ | async"
-[disabled]="!(isUserFundsSufficient$ | async)"
-(click)="openBox()" -->

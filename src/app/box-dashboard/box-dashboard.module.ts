@@ -7,6 +7,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from '@app/shared/shared.module';
+import { TotalWalletBalancePipe } from '@app/shared/pipes/total-wallet-balance.pipe';
 @NgModule({
   declarations: [BoxDashboardComponent, BoxCardComponent],
   imports: [
@@ -15,7 +16,8 @@ import { SharedModule } from '@app/shared/shared.module';
     MatProgressSpinnerModule,
     MatCardModule,
     MatButtonModule,
-    SharedModule
+    SharedModule,
   ],
+  providers: [TotalWalletBalancePipe],
 })
 export class BoxDashboardModule {}

@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { filter, map, switchMap, tap } from 'rxjs';
+import { debounceTime, filter, map, switchMap } from 'rxjs';
 import {
   displayPrize,
   LOOT_BOX_ACTIONS,
@@ -45,6 +45,7 @@ export class LootBoxEffects {
 
     return actions$.pipe(
       ofType(LOOT_BOX_ACTIONS.OPEN_LOOT_BOX),
+      debounceTime(300),
       switchMap(({ lootBoxId }) => lootBoxService.openLootBox(lootBoxId)),
       map((response) => displayPrize({ prize: response }))
     );
@@ -57,7 +58,6 @@ export class LootBoxEffects {
       return actions$.pipe(
         ofType(displayPrize),
         map(pluckPrizeFromResponse),
-        tap(console.log),
         filter(isPrize),
         switchMap((prize) => {
           return lootBoxService.openPrizeModal(prize);

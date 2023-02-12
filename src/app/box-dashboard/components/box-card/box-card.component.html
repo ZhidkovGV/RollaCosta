@@ -11,6 +11,7 @@
       mat-raised-button
       color="accent"
       *ngIf="isUserLoggedIn$ | async"
+      [disabled]="!(isUserFundsSufficient$ | async)"
       (click)="openBox()"
     >
       Open

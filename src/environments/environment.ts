@@ -1,6 +1,7 @@
 export const environment = Object.freeze({
   production: false,
   graphQLUrl: 'https://api-staging.csgoroll.com/graphql',
+  wsGraphQlUrl: 'wss://api-staging.csgoroll.com/graphql',
   loginUrl: 'https://api-staging.csgoroll.com/auth/steam?redirectUri=http://localhost:4200',
 });
 

@@ -25,6 +25,7 @@
     "@ngrx/store": "^14.3.3",
     "apollo-angular": "^4.2.0",
     "graphql": "^16",
+    "graphql-ws": "^5.11.3",
     "ramda": "^0.28.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

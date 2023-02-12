@@ -8,8 +8,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from '@app/shared/shared.module';
 import { TotalWalletBalancePipe } from '@app/shared/pipes/total-wallet-balance.pipe';
+import { BoxDetailsPageComponent } from './components/box-details-page/box-details-page.component';
+import { MatIconModule } from '@angular/material/icon';
+
 @NgModule({
-  declarations: [BoxDashboardComponent, BoxCardComponent],
+  declarations: [BoxDashboardComponent, BoxCardComponent, BoxDetailsPageComponent],
   imports: [
     CommonModule,
     BoxDashboardRoutingModule,
@@ -17,6 +20,7 @@ import { TotalWalletBalancePipe } from '@app/shared/pipes/total-wallet-balance.p
     MatCardModule,
     MatButtonModule,
     SharedModule,
+    MatIconModule
   ],
   providers: [TotalWalletBalancePipe],
 })

@@ -41,17 +41,19 @@ export class UserService {
     `,
   });
 
-  // public currentUserWalletUpdate$ = this.client.watchQuery({
-  //   query: gql`
-  //     subscription OnUpdateWallet {
-  //       updateWallet {
-  //         wallet {
-  //           id
-  //           amount
-  //           name
-  //         }
-  //       }
-  //     }
-  //   `,
-  // }).valueChanges.subscribe(console.log);
+  public currentUserWalletUpdate$ = this.client
+    .subscribe({
+      query: gql`
+        subscription UpdateWallet($walletType: [WalletType!]) {
+          updateWallet(walletType: $walletType) {
+            wallet {
+              id
+              amount
+            }
+          }
+        }
+      `,
+      variables: { walletType: 'MAIN' },
+    })
+    .subscribe(console.log);
 }

@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { openLootBox } from '@app/box-dashboard/actions/loot-box.action';
 import { LootBox } from '@app/box-dashboard/services/loot-box.service';
 import { TotalWalletBalancePipe } from '@app/shared/pipes/total-wallet-balance.pipe';
@@ -12,6 +11,7 @@ import { map } from 'rxjs/operators';
   selector: 'app-box-card',
   templateUrl: './box-card.component.html',
   styleUrls: ['./box-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BoxCardComponent {
   @Input() public box!: LootBox;
@@ -26,15 +26,10 @@ export class BoxCardComponent {
 
   constructor(
     private store: Store<{ currentUser: User }>,
-    private router: Router,
     private walletsPipe: TotalWalletBalancePipe
   ) {}
 
   public openBox(): void {
     this.store.dispatch(openLootBox({ lootBoxId: this.box.id }));
-  }
-
-  public viewBox(): void {
-    this.router.navigate([this.box.id]);
   }
 }

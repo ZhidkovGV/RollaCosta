@@ -1,12 +1,12 @@
 :root {
   --backgroud-color: #292e35;
-  --primary-color: #f5f5f5;
-  --secondary-color: #f5f5f5;
   --text-color: #f5f5f5;
 
   --header-bg-color: #31353d;
 
   --avatar-bg-color: #76787a;
+
   --widget-background-color: var(--backgroud-color);
+
   --card-image-backdrop-color: #31353d;
 }

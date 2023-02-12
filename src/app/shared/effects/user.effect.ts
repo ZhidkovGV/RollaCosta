@@ -7,7 +7,10 @@ import {
 } from '@ngrx/effects';
 import { UserService } from '@app/shared/services/user.service';
 import { map, switchMap } from 'rxjs';
-import { updateCurrentUser } from '@app/shared/actions/update-current-user.action';
+import {
+  refreshCurrentUser,
+  updateCurrentUser,
+} from '@app/shared/actions/update-current-user.action';
 
 @Injectable()
 export class UserEffects {
@@ -16,9 +19,17 @@ export class UserEffects {
     const userService: UserService = inject(UserService);
 
     return actions$.pipe(
-      ofType(ROOT_EFFECTS_INIT),
+      ofType(ROOT_EFFECTS_INIT, refreshCurrentUser),
       switchMap(() => userService.currentUser$),
       map((response) => updateCurrentUser({ userResponse: response }))
+    );
+  });
+
+  public readonly updateWalletsEffect = createEffect(() => {
+    const userService: UserService = inject(UserService);
+
+    return userService.currentUserWalletUpdate$.pipe(
+      map(() => refreshCurrentUser()),
     );
   });
 }

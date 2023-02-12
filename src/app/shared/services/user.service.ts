@@ -55,5 +55,4 @@ export class UserService {
       `,
       variables: { walletType: 'MAIN' },
     })
-    .subscribe(console.log);
 }

@@ -6,8 +6,23 @@ import {
   LOOT_BOX_ACTIONS,
   updateLootBoxesList,
 } from '@app/box-dashboard/actions/loot-box.action';
-import { LootBoxService } from '@app/box-dashboard/services/loot-box.service';
+import {
+  LootBoxService,
+  Prize,
+} from '@app/box-dashboard/services/loot-box.service';
 import { PrizeModalService } from '@app/shared/services/prize-modal.service';
+import { Maybe } from '@app/shared/types/maybe';
+import { path } from 'ramda';
+
+const pluckPrizeFromResponse = path<Maybe<Prize>>([
+  'prize',
+  'data',
+  'openBox',
+  'boxOpenings',
+  0,
+  'itemVariant',
+]);
+const isPrize = (prize: Maybe<Prize>): prize is Prize => !!prize;
 
 @Injectable()
 export class LootBoxEffects {
@@ -41,11 +56,11 @@ export class LootBoxEffects {
       const lootBoxService: PrizeModalService = inject(PrizeModalService);
       return actions$.pipe(
         ofType(displayPrize),
-        filter(({ prize }) => !!prize.data?.openBox.boxOpenings[0]?.itemVariant),
-        switchMap(({ prize }) => {
-          return lootBoxService.openPrizeModal(
-            prize.data!.openBox.boxOpenings[0]!.itemVariant
-          );
+        map(pluckPrizeFromResponse),
+        tap(console.log),
+        filter(isPrize),
+        switchMap((prize) => {
+          return lootBoxService.openPrizeModal(prize);
         })
       );
     },
